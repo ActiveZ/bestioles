@@ -1,0 +1,16 @@
+<form th:object="${speciesItem}" th:action="@{/specie}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <div>
+        <label for="commonName">Nom Commun : </label>
+        <input type="text" th:field="*{commonName}" id="commonName"/>
+    </div>
+    <div>
+        <label for="latinName">Nom latin :</label>
+        <input type="text" th:field="*{latinName}" id="latinName"/>
+    </div>
+    <div>
+        <input type="submit" class="button" value="Sauver"/>
+        <input type="button" class="button" value="Retour"
+               onclick="window.location='/species'"/>
+    </div>
+</form>

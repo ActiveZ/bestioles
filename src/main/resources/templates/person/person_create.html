@@ -1,0 +1,20 @@
+<form th:object="${personItem}" th:action="@{/person}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <div>
+        <label for="firstname">Prénom : </label>
+        <input type="text" th:field="*{firstname}" id="firstname"/>
+    </div>
+    <div>
+        <label for="lastname">Nom :</label>
+        <input type="text" th:field="*{lastname}" id="lastname"/>
+    </div>
+    <div>
+        <label for="age">Age :</label>
+        <input type="text" th:field="*{lastname}" id="age"/>
+    </div>
+    <div>
+        <input type="submit" class="button" value="Sauver"/>
+        <input type="button" class="button" value="Retour"
+               onclick="window.location='/person'"/>
+    </div>
+</form>
