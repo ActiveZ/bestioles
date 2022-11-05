@@ -22,4 +22,13 @@ public class AnimalService {
         Optional<Animal> optAnimal = animalRepository.findById(id);
         return optAnimal.isPresent() ? optAnimal.get() : null;
     }
+
+    public void createOrUpdate(Animal animalItem) {
+        animalRepository.save(animalItem);
+    }
+
+    public void delete (Integer animalId) {
+        Optional<Animal> animalToDelete = animalRepository.findById(animalId);
+        animalToDelete.ifPresent(animal -> animalRepository.delete(animal));
+    }
 }

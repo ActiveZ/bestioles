@@ -5,6 +5,7 @@ import fr.diginamic.bestioles.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +21,15 @@ public class PersonService {
     public Person findById(Integer id) {
         Optional<Person> optPerson = personRepository.findById(id);
         return optPerson.isPresent() ? optPerson.get() : null;
+    }
+
+    public void createOrUpdate(Person personItem) {
+        personRepository.save(personItem);
+    }
+
+    public void delete(Integer personId) {
+        Optional<Person> personToDelete = personRepository.findById(personId);
+        personToDelete.ifPresent(person ->personRepository.delete(person));
     }
 
 }

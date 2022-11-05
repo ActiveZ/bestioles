@@ -21,4 +21,13 @@ public class SpeciesService {
         Optional<Species> optSpecies = speciesRepository.findById(id);
         return optSpecies.isPresent() ? optSpecies.get() : null;
     }
+
+    public void createOrUpdate(Species speciesItem) {
+        speciesRepository.save(speciesItem);
+    }
+
+    public void delete(Integer speciesId) {
+        Optional<Species> speciesToDelete = speciesRepository.findById(speciesId);
+        speciesToDelete.ifPresent(species -> speciesRepository.delete(species));
+    }
 }

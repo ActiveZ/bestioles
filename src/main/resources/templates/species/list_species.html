@@ -12,6 +12,7 @@
         <th>Non commun</th>
         <th>Nom latin</th>
         <th>Editer</th>
+        <th>Supprimer</th>
     </tr>
     </thead>
     <tbody>
@@ -19,6 +20,10 @@
         <td th:text="${speciesItem.commonName}"/>
         <td th:text="${speciesItem.latinName}"/>
         <td><a th:href="@{'/species/' + ${speciesItem.id}}">📝</a></td>
+        <td>
+            <a th:href="@{'/species/delete/' + ${speciesItem.id}}"
+               onclick="return confirm('Êtes-vous sûr ?')">🗑️</a>
+        </td>
     </tr>
     </tbody>
 </table>

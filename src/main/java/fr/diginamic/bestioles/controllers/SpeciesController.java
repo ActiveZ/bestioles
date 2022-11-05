@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -41,5 +42,17 @@ public class SpeciesController {
     public String createSpecies(Model model) {
         model.addAttribute("speciesItem", new Species());
         return path + "species_create";
+    }
+
+    @PostMapping()
+    public String createOrUpdate(Species speciesItem) {
+        speciesService.createOrUpdate(speciesItem);
+        return "redirect:/species";
+    }
+
+    @GetMapping("delete/{id}")
+    public String delete(@PathVariable("id") Integer speciesId) {
+        speciesService.delete(speciesId);
+        return "redirect:/species";
     }
 }

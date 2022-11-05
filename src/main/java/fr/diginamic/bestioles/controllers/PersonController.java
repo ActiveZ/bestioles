@@ -5,9 +5,7 @@ import fr.diginamic.bestioles.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -39,5 +37,17 @@ public class PersonController {
     public String createPerson(Model model) {
         model.addAttribute("personItem", new Person());
         return path + "person_create";
+    }
+
+    @PostMapping
+    public String createOrUpdate(Person personItem) {
+        personService.createOrUpdate(personItem);
+        return "redirect:/person";
+    }
+
+    @GetMapping("delete/{id}")
+    public String delete(@PathVariable("id") Integer personId) {
+        personService.delete(personId);
+        return "redirect:/person";
     }
 }

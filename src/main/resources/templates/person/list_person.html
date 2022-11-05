@@ -13,6 +13,7 @@
         <th>Nom</th>
         <th>Age</th>
         <th>Editer</th>
+        <th>Supprimer</th>
     </tr>
     </thead>
     <tbody>
@@ -21,6 +22,10 @@
         <td th:text="${personItem.lastname}"/>
         <td th:text="${personItem.age}"/>
         <td><a th:href="@{'/person/' + ${personItem.id}}">📝</a></td>
+        <td>
+            <a th:href="@{'/person/delete/' + ${personItem.id}}"
+               onclick="return confirm('Êtes-vous sûr ?')">🗑️</a>
+        </td>
     </tr>
     </tbody>
 </table>

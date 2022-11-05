@@ -15,6 +15,12 @@
         </select>
     </div>
     <div>
+        <label for="sex">Sexe :</label>
+        <select th:field="*{sex}" id="sex">
+            <option th:each="sex:${sexList}" th:value="${sex}" th:text="${sex}"></option>
+        </select>
+    </div>
+    <div>
         <input type="submit" class="button" value="Sauver"/>
         <input type="button" class="button" value="Retour"
                onclick="window.location='/animal'"/>

@@ -1,6 +1,7 @@
 package fr.diginamic.bestioles.controllers;
 
 import fr.diginamic.bestioles.entities.Animal;
+import fr.diginamic.bestioles.enums.Sex;
 import fr.diginamic.bestioles.repositories.SpeciesRepository;
 import fr.diginamic.bestioles.services.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -43,6 +45,19 @@ public class AnimalController {
     public String createAnimal(Model model) {
         model.addAttribute("animalItem", new Animal());
         model.addAttribute("speciesList", speciesRepository.findAll(Sort.by(Sort.Direction.ASC, "commonName")));
+        model.addAttribute("sexList", List.of(Sex.values()));
         return path + "animal_create";
+    }
+
+    @PostMapping
+    public String createOrUpdate(Animal animalItem) {
+        animalService.createOrUpdate(animalItem);
+        return "redirect:/animal";
+    }
+
+    @GetMapping("delete/{id}")
+    public String delete(@PathVariable("id") Integer animalId) {
+        animalService.delete(animalId);
+        return "redirect:/animal";
     }
 }
