@@ -1,31 +1,39 @@
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <link rel="stylesheet" th:href="@{/resources/css/main.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/main.css}" />
     <meta charset="utf-8">
     <title>Liste des Espèces</title>
 </head>
+
 <body>
-<h1>LISTE DES ESPECES</h1>
-<table class="mainTable">
-    <thead>
-    <tr>
-        <th>Non commun</th>
-        <th>Nom latin</th>
-        <th>Editer</th>
-        <th>Supprimer</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="speciesItem : ${speciesList}">
-        <td th:text="${speciesItem.commonName}"/>
-        <td th:text="${speciesItem.latinName}"/>
-        <td><a th:href="@{'/species/' + ${speciesItem.id}}">📝</a></td>
-        <td>
-            <a th:href="@{'/species/delete/' + ${speciesItem.id}}"
-               onclick="return confirm('Êtes-vous sûr ?')">🗑️</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
-<button type="button" onclick="window.location='/species/create'">➕ Ajouter une Espèce</button>
+    <ul>
+        <li><a href="/person">Liste des personnes</a></li>
+        <li><a href="/animal">Liste des animaux</a></li>
+        <li><a href="/species">Liste des espèces</a></li>
+    </ul>
+
+    <h1>LISTE DES ESPECES</h1>
+    <table class="mainTable">
+        <thead>
+            <tr>
+                <th>Non commun</th>
+                <th>Nom latin</th>
+                <th>Editer</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="speciesItem : ${speciesList}">
+                <td th:text="${speciesItem.commonName}" />
+                <td th:text="${speciesItem.latinName}" />
+                <td><a th:href="@{'/species/' + ${speciesItem.id}}">📝</a></td>
+                <td>
+                    <a th:href="@{'/species/delete/' + ${speciesItem.id}}"
+                        onclick="return confirm('Êtes-vous sûr ?')">🗑️</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" onclick="window.location='/species/create'">➕ Ajouter une Espèce</button>
 </body>

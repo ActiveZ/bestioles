@@ -1,0 +1,30 @@
+body {
+  background: lightgrey;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline;
+}
+
+h1,
+button {
+  margin: 20px;
+  padding: 10px;
+}
+
+table,
+th,
+td {
+  margin: auto;
+  padding: 3px;
+  border: 1px solid;
+  text-align: center;
+  background-color: whitesmoke;
+}

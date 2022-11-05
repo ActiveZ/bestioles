@@ -1,37 +1,45 @@
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <link rel="stylesheet" th:href="@{/resources/css/main.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/main.css}" />
     <meta charset="utf-8">
     <title>Liste des Animaux</title>
 </head>
+
 <body>
-<h1>LISTE DES ANIMAUX</h1>
-<table class="mainTable">
-    <thead>
-    <tr>
-        <th>Nom</th>
-        <th>Couleur</th>
-        <th>Sexe</th>
-        <th>Espèce</th>
-        <th>Nom latin</th>
-        <th>Editer</th>
-        <th>Supprimer</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="animalItem : ${animalList}">
-        <td th:text="${animalItem.name}"/>
-        <td th:text="${animalItem.color}"/>
-        <td th:text="${animalItem.sex}"/>
-        <td th:text="${animalItem.species.commonName}"/>
-        <td th:text="${animalItem.species.latinName}"/>
-        <td><a th:href="@{'/animal/' + ${animalItem.id}}">📝</a></td>
-        <td>
-            <a th:href="@{'/animal/delete/' + ${animalItem.id}}"
-               onclick="return confirm('Êtes-vous sûr ?')">🗑️</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
-<button type="button" onclick="window.location='/animal/create'">➕ Ajouter un Animal</button>
+    <ul>
+        <li><a href="/person">Liste des personnes</a></li>
+        <li><a href="/animal">Liste des animaux</a></li>
+        <li><a href="/species">Liste des espèces</a></li>
+    </ul>
+
+    <h1>LISTE DES ANIMAUX</h1>
+    <table class="mainTable">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Couleur</th>
+                <th>Sexe</th>
+                <th>Espèce</th>
+                <th>Nom latin</th>
+                <th>Editer</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="animalItem : ${animalList}">
+                <td th:text="${animalItem.name}" />
+                <td th:text="${animalItem.color}" />
+                <td th:text="${animalItem.sex}" />
+                <td th:text="${animalItem.species.commonName}" />
+                <td th:text="${animalItem.species.latinName}" />
+                <td><a th:href="@{'/animal/' + ${animalItem.id}}">📝</a></td>
+                <td>
+                    <a th:href="@{'/animal/delete/' + ${animalItem.id}}"
+                        onclick="return confirm('Êtes-vous sûr ?')">🗑️</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" onclick="window.location='/animal/create'">➕ Ajouter un Animal</button>
 </body>
