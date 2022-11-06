@@ -40,7 +40,6 @@ public class SpeciesController {
     @GetMapping("create")
     public String createSpecies(Model model) {
         model.addAttribute("species", new Species());
-        System.out.println("model = " + model);
         return path + "species_create";
     }
 
