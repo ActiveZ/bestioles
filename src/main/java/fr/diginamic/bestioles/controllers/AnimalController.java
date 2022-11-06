@@ -53,8 +53,10 @@ public class AnimalController {
     }
 
     @PostMapping
-    public String createOrUpdate(@Valid Animal animal, BindingResult result) {
+    public String createOrUpdate(@Valid Animal animal, BindingResult result, Model model) {
         if (result.hasErrors()) {
+            model.addAttribute("speciesList", speciesRepository.findAll(Sort.by(Sort.Direction.ASC, "commonName")));
+            model.addAttribute("sexList", List.of(Sex.values()));
             return path + "animal_create";
         }
         animalService.createOrUpdate(animal);

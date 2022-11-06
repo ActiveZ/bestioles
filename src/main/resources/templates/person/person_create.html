@@ -20,17 +20,20 @@
         <div>
             <label for="firstname">Prénom : </label>
             <input type="text" th:field="*{firstname}" id="firstname" />
-            <span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">Error</span>
         </div>
+        <span class="error" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">Error</span>
+
         <div>
             <label for="lastname">Nom :</label>
             <input type="text" th:field="*{lastname}" id="lastname" />
-            <span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Error</span>
         </div>
+        <span class="error" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Error</span>
+        
         <div>
             <label for="age">Age :</label>
             <input type="text" th:field="*{age}" id="age" />
         </div>
+        
         <div>
             <input type="submit" class="button" value="Sauver" />
             <input type="button" class="button" value="Retour" onclick="window.location='/person'" />

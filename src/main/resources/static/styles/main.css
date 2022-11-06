@@ -30,9 +30,13 @@ li a:not(.active):hover {
 
 h1,
 button,
-input,
 select {
   margin: 20px;
+  padding: 10px;
+}
+
+input {
+  margin-top: 20px;
   padding: 10px;
 }
 
@@ -44,4 +48,9 @@ td {
   border: 1px solid;
   text-align: center;
   background-color: whitesmoke;
+}
+
+.error {
+  color: red;
+  font-size: small;
 }
