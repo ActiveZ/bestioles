@@ -1,6 +1,7 @@
 package fr.diginamic.bestioles.controllers;
 
 import fr.diginamic.bestioles.entities.Animal;
+import fr.diginamic.bestioles.entities.Species;
 import fr.diginamic.bestioles.enums.Sex;
 import fr.diginamic.bestioles.repositories.SpeciesRepository;
 import fr.diginamic.bestioles.services.AnimalService;
@@ -36,9 +37,10 @@ public class AnimalController {
     @GetMapping("{id}")
     public String itemAnimal(@PathVariable("id") Integer id, Model model) {
         Animal animal = animalService.findById(id);
-        List<Animal> animalList = List.of(animal);
-        model.addAttribute("animalList", animalList);
-        return path + "list_animal";
+        model.addAttribute("animalItem", animal);
+        model.addAttribute("speciesList", speciesRepository.findAll(Sort.by(Sort.Direction.ASC, "commonName")));
+        model.addAttribute("sexList", List.of(Sex.values()));
+        return path + "animal_create";
     }
 
     @GetMapping("create")

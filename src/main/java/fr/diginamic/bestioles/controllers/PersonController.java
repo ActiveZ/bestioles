@@ -1,5 +1,6 @@
 package fr.diginamic.bestioles.controllers;
 
+import fr.diginamic.bestioles.entities.Animal;
 import fr.diginamic.bestioles.entities.Person;
 import fr.diginamic.bestioles.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,8 @@ public class PersonController {
     @GetMapping("{id}")
     public String itemPerson(@PathVariable("id") Integer id, Model model) {
         Person person = personService.findById(id);
-        List<Person> personList = List.of(person);
-        model.addAttribute("personList", personList);
-        return path + "list_person";
+        model.addAttribute("personItem", person);
+        return path + "person_create";
     }
 
     @GetMapping("create")

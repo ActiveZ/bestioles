@@ -1,16 +1,33 @@
-<form th:object="${speciesItem}" th:action="@{/species}" method="post">
-    <input type="hidden" th:field="*{id}"/>
-    <div>
-        <label for="commonName">Nom Commun : </label>
-        <input type="text" th:field="*{commonName}" id="commonName"/>
-    </div>
-    <div>
-        <label for="latinName">Nom latin :</label>
-        <input type="text" th:field="*{latinName}" id="latinName"/>
-    </div>
-    <div>
-        <input type="submit" class="button" value="Sauver"/>
-        <input type="button" class="button" value="Retour"
-               onclick="window.location='/species'"/>
-    </div>
-</form>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" th:href="@{/styles/main.css}" />
+    <meta charset="utf-8">
+    <title>nouvelle espèce</title>
+</head>
+
+<body>
+    <ul>
+        <li><a href="/person">Liste des personnes</a></li>
+        <li><a href="/animal">Liste des animaux</a></li>
+        <li><a class="active" href="/species">Liste des espèces</a></li>
+    </ul>
+
+    <h1>NOUVELLE ESPECE</h1>
+
+    <form th:object="${speciesItem}" th:action="@{/species}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <div>
+            <label for="commonName">Nom Commun : </label>
+            <input type="text" th:field="*{commonName}" id="commonName" />
+        </div>
+        <div>
+            <label for="latinName">Nom latin :</label>
+            <input type="text" th:field="*{latinName}" id="latinName" />
+        </div>
+        <div>
+            <input type="submit" class="button" value="Sauver" />
+            <input type="button" class="button" value="Retour" onclick="window.location='/species'" />
+        </div>
+    </form>
+</body>

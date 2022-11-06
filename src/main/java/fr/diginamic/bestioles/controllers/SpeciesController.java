@@ -25,22 +25,20 @@ public class SpeciesController {
     public String listSpecies(Model model) {
         List<Species> speciesList = speciesService.findAll();
         model.addAttribute("speciesList", speciesList);
-//        speciesList.forEach(System.out::println);
         return path + "list_species";
     }
 
     @GetMapping("{id}")
     public String itemSpecies(@PathVariable("id") Integer id, Model model) {
         Species species = speciesService.findById(id);
-        List<Species> speciesList = List.of(species);
-        model.addAttribute("speciesList", speciesList);
-//        speciesList.forEach(System.out::println);
-        return path + "list_species";
+        model.addAttribute("speciesItem", species);
+        return path + "species_create";
     }
 
     @GetMapping("create")
     public String createSpecies(Model model) {
         model.addAttribute("speciesItem", new Species());
+        System.out.println("model = " + model);
         return path + "species_create";
     }
 

@@ -1,28 +1,45 @@
-<form th:object="${animalItem}" th:action="@{/animal}" method="post">
-    <input type="hidden" th:field="*{id}"/>
-    <div>
-        <label for="name">Nom : </label>
-        <input type="text" th:field="*{name}" id="name"/>
-    </div>
-    <div>
-        <label for="color">Couleur :</label>
-        <input type="text" th:field="*{color}" id="color"/>
-    </div>
-    <div>
-        <label for="species">Espèce :</label>
-        <select th:field="*{species}" id="species">
-            <option th:each="sp:${speciesList}" th:value="${sp.id}" th:text="${sp.commonName}"></option>
-        </select>
-    </div>
-    <div>
-        <label for="sex">Sexe :</label>
-        <select th:field="*{sex}" id="sex">
-            <option th:each="sex:${sexList}" th:value="${sex}" th:text="${sex}"></option>
-        </select>
-    </div>
-    <div>
-        <input type="submit" class="button" value="Sauver"/>
-        <input type="button" class="button" value="Retour"
-               onclick="window.location='/animal'"/>
-    </div>
-</form>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" th:href="@{/styles/main.css}" />
+    <meta charset="utf-8">
+    <title>nouvel animal</title>
+</head>
+
+<body>
+    <ul>
+        <li><a href="/person">Liste des personnes</a></li>
+        <li><a class="active" href="/animal">Liste des animaux</a></li>
+        <li><a href="/species">Liste des espèces</a></li>
+    </ul>
+
+    <h1>NOUVEL ANIMAL</h1>
+    
+    <form th:object="${animalItem}" th:action="@{/animal}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <div>
+            <label for="name">Nom : </label>
+            <input type="text" th:field="*{name}" id="name" />
+        </div>
+        <div>
+            <label for="color">Couleur :</label>
+            <input type="text" th:field="*{color}" id="color" />
+        </div>
+        <div>
+            <label for="species">Espèce :</label>
+            <select th:field="*{species}" id="species">
+                <option th:each="sp:${speciesList}" th:value="${sp.id}" th:text="${sp.commonName}"></option>
+            </select>
+        </div>
+        <div>
+            <label for="sex">Sexe :</label>
+            <select th:field="*{sex}" id="sex">
+                <option th:each="sex:${sexList}" th:value="${sex}" th:text="${sex}"></option>
+            </select>
+        </div>
+        <div>
+            <input type="submit" class="button" value="Sauver" />
+            <input type="button" class="button" value="Retour" onclick="window.location='/animal'" />
+        </div>
+    </form>
+</body>

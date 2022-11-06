@@ -1,20 +1,37 @@
 body {
   background: lightgrey;
   text-align: center;
+  margin: 0;
 }
 
 ul {
   list-style-type: none;
-  margin: 0;
   padding: 0;
+  background-color: #333;
+  display: flex;
 }
 
-li {
-  display: inline;
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover and not active */
+li a:not(.active):hover {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04aa6d;
 }
 
 h1,
-button {
+button,
+input,
+select {
   margin: 20px;
   padding: 10px;
 }
@@ -23,7 +40,7 @@ table,
 th,
 td {
   margin: auto;
-  padding: 3px;
+  padding: 10px;
   border: 1px solid;
   text-align: center;
   background-color: whitesmoke;
