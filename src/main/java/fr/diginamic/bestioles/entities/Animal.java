@@ -1,10 +1,14 @@
 package fr.diginamic.bestioles.entities;
 
 import fr.diginamic.bestioles.enums.Sex;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
-import java.math.BigInteger;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @NoArgsConstructor
 @Getter
@@ -21,12 +25,14 @@ public class Animal {
     private String color;
 
     @Column(length = 20)
+    @NotEmpty
     private String name;
 
     @Enumerated(EnumType.STRING)
     private Sex sex;
 
     @ManyToOne
+    @NotNull
     private Species species;
 
 }

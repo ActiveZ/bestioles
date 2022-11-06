@@ -22,8 +22,8 @@ public class SpeciesService {
         return optSpecies.isPresent() ? optSpecies.get() : null;
     }
 
-    public void createOrUpdate(Species speciesItem) {
-        speciesRepository.save(speciesItem);
+    public void createOrUpdate(Species species) {
+        speciesRepository.save(species);
     }
 
     public void delete(Integer speciesId) {

@@ -1,10 +1,13 @@
 package fr.diginamic.bestioles.entities;
 
-import lombok.*;
-import org.hibernate.Hibernate;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.Objects;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @NoArgsConstructor
 @Getter
@@ -21,9 +24,13 @@ public class Person {
     private Integer age;
 
     @Column(length = 50)
+    @NotEmpty
+    @Size(max = 50)
     private String firstname;
 
     @Column(length = 50)
+    @NotEmpty
+    @Size(max = 50)
     private String lastname;
 }
 

@@ -23,8 +23,8 @@ public class PersonService {
         return optPerson.isPresent() ? optPerson.get() : null;
     }
 
-    public void createOrUpdate(Person personItem) {
-        personRepository.save(personItem);
+    public void createOrUpdate(Person person) {
+        personRepository.save(person);
     }
 
     public void delete(Integer personId) {

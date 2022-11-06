@@ -23,8 +23,8 @@ public class AnimalService {
         return optAnimal.isPresent() ? optAnimal.get() : null;
     }
 
-    public void createOrUpdate(Animal animalItem) {
-        animalRepository.save(animalItem);
+    public void createOrUpdate(Animal animal) {
+        animalRepository.save(animal);
     }
 
     public void delete (Integer animalId) {

@@ -5,11 +5,13 @@ import fr.diginamic.bestioles.services.SpeciesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -31,20 +33,23 @@ public class SpeciesController {
     @GetMapping("{id}")
     public String itemSpecies(@PathVariable("id") Integer id, Model model) {
         Species species = speciesService.findById(id);
-        model.addAttribute("speciesItem", species);
+        model.addAttribute("species", species);
         return path + "species_create";
     }
 
     @GetMapping("create")
     public String createSpecies(Model model) {
-        model.addAttribute("speciesItem", new Species());
+        model.addAttribute("species", new Species());
         System.out.println("model = " + model);
         return path + "species_create";
     }
 
     @PostMapping()
-    public String createOrUpdate(Species speciesItem) {
-        speciesService.createOrUpdate(speciesItem);
+    public String createOrUpdate(@Valid Species species, BindingResult result) {
+        if (result.hasErrors()) {
+            return path + "species_create";
+        }
+        speciesService.createOrUpdate(species);
         return "redirect:/species";
     }
 
