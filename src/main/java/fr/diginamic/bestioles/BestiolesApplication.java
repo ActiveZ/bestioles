@@ -1,18 +1,12 @@
 package fr.diginamic.bestioles;
 
-import fr.diginamic.bestioles.entities.Animal;
-import fr.diginamic.bestioles.entities.Person;
-import fr.diginamic.bestioles.entities.Species;
 import fr.diginamic.bestioles.repositories.AnimalRepository;
 import fr.diginamic.bestioles.repositories.PersonRepository;
 import fr.diginamic.bestioles.repositories.SpeciesRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.List;
 
 @SpringBootApplication
 //@AllArgsConstructor // pas besoin si @Autowired
