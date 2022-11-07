@@ -28,10 +28,6 @@ li a:not(.active):hover {
   background-color: #04aa6d;
 }
 
-main {
-  display: flex;
-}
-
 form {
   width: 50%;
   text-align: end;
