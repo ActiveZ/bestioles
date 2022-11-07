@@ -5,6 +5,7 @@ import fr.diginamic.bestioles.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,8 +19,7 @@ public class PersonService {
     }
 
     public Person findById(Integer id) {
-        Optional<Person> optPerson = personRepository.findById(id);
-        return optPerson.isPresent() ? optPerson.get() : null;
+        return personRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
     public void createOrUpdate(Person person) {

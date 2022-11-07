@@ -5,6 +5,7 @@ import fr.diginamic.bestioles.repositories.AnimalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,8 +20,7 @@ public class AnimalService {
     }
 
     public Animal findById(Integer id) {
-        Optional<Animal> optAnimal = animalRepository.findById(id);
-        return optAnimal.isPresent() ? optAnimal.get() : null;
+        return animalRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
     public void createOrUpdate(Animal animal) {
