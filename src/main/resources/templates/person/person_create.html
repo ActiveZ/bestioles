@@ -33,7 +33,8 @@
             <label for="age">Age :</label>
             <input type="text" th:field="*{age}" id="age" />
         </div>
-        
+        <span class="error" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Error</span>
+
         <div>
             <input type="submit" class="button" value="Sauver" />
             <input type="button" class="button" value="Retour" onclick="window.location='/person'" />
