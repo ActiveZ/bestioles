@@ -6,6 +6,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -21,6 +23,8 @@ public class Person {
     private Integer id;
 
     @Column
+    @Max(120)
+    @Min(0)
     private Integer age;
 
     @Column(length = 50)
