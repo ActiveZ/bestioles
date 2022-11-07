@@ -3,12 +3,16 @@ package fr.diginamic.bestioles;
 import fr.diginamic.bestioles.repositories.AnimalRepository;
 import fr.diginamic.bestioles.repositories.PersonRepository;
 import fr.diginamic.bestioles.repositories.SpeciesRepository;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @SpringBootApplication
+@EnableAspectJAutoProxy
 //@AllArgsConstructor // pas besoin si @Autowired
 public class BestiolesApplication implements CommandLineRunner {
 	@Autowired

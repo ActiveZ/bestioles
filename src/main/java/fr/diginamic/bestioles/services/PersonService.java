@@ -2,6 +2,7 @@ package fr.diginamic.bestioles.services;
 
 import fr.diginamic.bestioles.entities.Person;
 import fr.diginamic.bestioles.repositories.PersonRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
