@@ -17,6 +17,7 @@ public class SpringSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers("/rest/public").permitAll()
                 .antMatchers("/rest/admin").hasRole("ADMIN")
                 .antMatchers("/rest/**").hasRole("USER")
                 .anyRequest().authenticated()
