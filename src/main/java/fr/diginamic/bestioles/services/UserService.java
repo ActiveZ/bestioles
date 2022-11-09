@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -21,10 +22,21 @@ public class UserService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    public User createUser(String userName, String pwd, String Role) {
+    public User createUser(String userName, String pwd, List<String> roles) {
         User newUser = new User();
         newUser.setUserName(userName);
         newUser.setPasswordHash(passwordEncoder.encode(pwd));
+        roles.forEach(role -> {
+            switch (role) {
+                case "admin":
+                    newUser.getAuthorities().add(authorityRepository.findById("ROLE_ADMIN").orElseThrow(EntityNotFoundException::new));
+                    break;
+                case "user":
+                    newUser.getAuthorities().add(authorityRepository.findById("ROLE_USER").orElseThrow(EntityNotFoundException::new));
+                    break;
+                default:
+            }
+        });
         newUser.getAuthorities().add(authorityRepository.findById("ROLE_USER").orElseThrow(EntityNotFoundException::new));
         return userRepository.save(newUser);
     }

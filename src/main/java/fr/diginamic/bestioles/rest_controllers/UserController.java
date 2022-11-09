@@ -3,6 +3,7 @@ package fr.diginamic.bestioles.rest_controllers;
 import fr.diginamic.bestioles.dto.UserDTO;
 import fr.diginamic.bestioles.entities.User;
 import fr.diginamic.bestioles.services.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,17 +21,19 @@ public class UserController {
     }
 
     /**
-     * dans body de Postman:
+     * dans body raw de Postman:
      *{
-     *     "userName":"test",
-     *     "pwd":"test"
+     *     "userName":"admin",
+     *     "pwd":"admin",
+     *     "roles":["admin", "user"]
      * }
+     * route public pour la création d'un utilisateur: localhost:8080/rest/new-user
      * @param userDTO
      * @return
      */
     @PostMapping("rest/new-user")
     public User createUser(@RequestBody UserDTO userDTO) {
-        return userService.createUser(userDTO.getUserName(), userDTO.getPwd(), userDTO.getRole());
+        return userService.createUser(userDTO.getUserName(), userDTO.getPwd(), userDTO.getRoles());
     }
 
 //    @PostMapping("rest/new-user")
