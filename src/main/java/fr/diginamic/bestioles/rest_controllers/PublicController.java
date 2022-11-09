@@ -24,7 +24,7 @@ public class PublicController {
         return "Hello, your account is authenticated as admin or user !";
     }
 
-    @PreAuthorize("principal.username != null")
+    @PreAuthorize("principal.enabled == true")
     @GetMapping("rest/public/enabled")
     public String accountEnabled() {
         return "Hello, your account is enabled !";
@@ -35,7 +35,7 @@ public class PublicController {
      * @param id
      * @return
      */
-    @PreAuthorize("@permissionEvaluator.isIdValid(#id)")
+    @PreAuthorize("@permissionEvaluator.isIdValid(#id, principal.getUsername())")
     @GetMapping("rest/public/id")
     public String authorizeById(@RequestParam Integer id) {
         return "hello, you have id 1 !";

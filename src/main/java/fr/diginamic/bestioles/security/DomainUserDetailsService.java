@@ -38,6 +38,7 @@ public class DomainUserDetailsService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(
                 domainUser.getUserName(),
                 domainUser.getPasswordHash(),
+                true, true, true, true,
                 authorities
         );
     }
